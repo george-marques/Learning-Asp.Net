@@ -9,6 +9,7 @@ namespace Asp_mvc.Data
 {
     public class AspContext : DbContext
     {
+        //Configuração do banco - EF
         public AspContext (DbContextOptions<AspContext> options)
             : base(options)
         {

@@ -2,6 +2,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Asp_mvc.Data;
 var builder = WebApplication.CreateBuilder(args);
+
+//Configuração do dbContext banco - EF
 builder.Services.AddDbContext<AspContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("AspContext") ?? throw new InvalidOperationException("Connection string 'AspContext' not found.")));
 
