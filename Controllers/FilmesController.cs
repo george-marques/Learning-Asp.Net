@@ -13,10 +13,12 @@ namespace Asp_mvc.Controllers
     public class FilmesController : Controller
     {
         private readonly AspContext _context;
+        private IFilmeRepository _filmeRepository;
 
-        public FilmesController(AspContext context)
+        public FilmesController(AspContext context, IFilmeRepository filmeRepository)
         {
             _context = context;
+            _filmeRepository = filmeRepository;
         }
 
         // GET: Filmes

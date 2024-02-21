@@ -6,6 +6,9 @@ builder.Services.AddDbContext<AspContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("AspContext") ?? throw new InvalidOperationException("Connection string 'AspContext' not found.")));
 
 // Add services to the container.
+// Injeção de dependência
+builder.Services.AddTransient<IFilmeRepository, FilmeRepository>();
+
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
