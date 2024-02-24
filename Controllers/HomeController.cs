@@ -1,9 +1,11 @@
 using Asp_mvc.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
 namespace Asp_mvc.Controllers
 {
+    [Authorize]
     [Route("")]
     [Route("casa")]
     public class HomeController : Controller
@@ -15,6 +17,7 @@ namespace Asp_mvc.Controllers
             _logger = logger;
         }
 
+        [AllowAnonymous]
         [Route("")]
         [Route("pagina-inicial")]
         public IActionResult Index(string id, string categoria)

@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Asp_mvc.Data;
 using Asp_mvc.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Asp_mvc.Controllers
 {
+    [Authorize]
     public class FilmesController : Controller
     {
         private readonly AspContext _context;
