@@ -1,14 +1,20 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Asp_mvc.Data;
+using Microsoft.AspNetCore.Identity;
 var builder = WebApplication.CreateBuilder(args);
 
-//Configuração do dbContext banco - EF
+//Configuraï¿½ï¿½o do dbContext banco - EF
 builder.Services.AddDbContext<AspContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("AspContext") ?? throw new InvalidOperationException("Connection string 'AspContext' not found.")));
 
+builder.Services.AddDbContext<ContextIdentity>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("ContextIdentityConnection") ?? throw new InvalidOperationException("Connection string 'ContextIdentity' not found.")));
+
+builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<ContextIdentity>();
+
 // Add services to the container.
-// Injeção de dependência
+// Injeï¿½ï¿½o de dependï¿½ncia
 builder.Services.AddTransient<IFilmeRepository, FilmeRepository>();
 
 builder.Services.AddControllersWithViews();
