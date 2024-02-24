@@ -31,6 +31,13 @@ namespace Asp_mvc.Controllers
             return View();
         }
 
+        [Authorize(Roles = "Admin")]
+        [Route("segredo")]
+        public IActionResult Secret()
+        {
+            return View();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         [Route("erro")]
         public IActionResult Error()

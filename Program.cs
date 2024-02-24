@@ -11,7 +11,8 @@ builder.Services.AddDbContext<AspContext>(options =>
 builder.Services.AddDbContext<ContextIdentity>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("ContextIdentityConnection") ?? throw new InvalidOperationException("Connection string 'ContextIdentity' not found.")));
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<ContextIdentity>();
+builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddRoles<IdentityRole>()
+    .AddEntityFrameworkStores<ContextIdentity>();
 
 // Add services to the container.
 // Inje��o de depend�ncia
